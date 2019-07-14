@@ -2,10 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
+<script type="text/javascript" src="webjars/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{js/main.js}" src="../static/js/main.js"></script>
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
 <title>Sprint Planner</title>
 </head>
 <body>
-<div align="center">
+<!-- div align="center">
 	<h1>Task Planner</h1>
 	<br/>
 	<a href="new">Create New Task</a>
@@ -36,6 +40,44 @@
 			</tr>
 		</tbody>
 	</table>
+</div-->
+
+<div class="container">
+	<h1>Task Planner</h1>
+	<br/>
+	<a class="btn btn-info cBtn" href="new">Create New Task</a>
+	<br/><br/>
+	<div class="card">
+		<div class="card-block">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Task ID</th>
+						<th>Description</th>
+						<th>Assignee</th>
+						<th>Task Status</th>
+						<th>Associated Sprint</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="tasks : ${listTasks}">
+						<td th:text="${tasks.id}">Task ID</td>
+						<td th:text="${tasks.description}">Description</td>
+						<td th:text="${tasks.assignee}">Assignee</td>
+						<td th:text="${tasks.status}">Task Status</td>
+						<td th:text="${tasks.sprint}">Associated Sprint</td>
+						<td>
+							<a  class="btn btn-success" th:href="@{'/edit/' + ${tasks.id}}">Edit</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a class="btn btn-danger" th:href="@{'/delete/' + ${tasks.id}}">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
 </div>
 
 </body>
