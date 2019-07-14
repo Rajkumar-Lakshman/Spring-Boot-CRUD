@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Edit Task</title>
+</head>
+<body>
+   
+	<div align="center">
+		 <h1>Edit Task</h1>
+    	<br/>
+    	<form action="#" th:action="@{/save}" th:object="${tasks}" method="post">
+    		<table border="0" cellpadding="10">
+    			<tr>
+    				<td>Task Id </td>
+    				<td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+    			</tr>
+    			<tr>
+    				<td>Task Description </td>
+    				<td><input type="text" th:field="*{description}"/></td>
+    			</tr>
+    			<tr>
+    				<td>Assignee </td>
+    				<td><input type="text" th:field="*{assignee}"/></td>
+    			</tr>
+    			<tr>
+    				<td>Task Status </td>
+    				<td><input type="text" th:field="*{status}"/></td>
+    			</tr>
+    			<tr>
+    				<td>Associated Sprint </td>
+    				<td><input type="text" th:field="*{sprint}"/></td>
+    			</tr>
+    			<tr>
+    				<td colspan="2" ><button type="submit">Save</button></td>
+    			</tr>
+    		</table>
+    	</form>
+	</div>
+</body>
+</html>
